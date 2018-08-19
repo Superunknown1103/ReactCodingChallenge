@@ -4,6 +4,7 @@ import moment from "moment";
 import styled from "styled-components";
 import { Header, Guidelines } from "./base";
 import TaskList from "./base/TaskList";
+import Task from "./base/Task";
 import { getData } from "./store/actions/dataActions";
 
 const Container = styled.div`
@@ -14,7 +15,12 @@ class App extends Component {
   constructor(){
     super()
     this.state = {
-      tasks: []
+      tasks: [
+        {
+          id: '0',
+          description: 'testItem'
+        }
+      ]
     }
   }
 
@@ -29,7 +35,7 @@ class App extends Component {
 
           <button onClick={ getData }>Fetch Tasks</button>
         </Container>
-       <TaskList />
+       <TaskList tasks={this.state.tasks}/>
       </div>
     );
   }
