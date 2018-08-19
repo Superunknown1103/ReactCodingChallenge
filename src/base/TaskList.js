@@ -1,5 +1,6 @@
  import React, { Component } from 'react';
  import Task from '../base/Task';
+
  class TaskList extends Component {
      render() {
         let tasks;
@@ -14,7 +15,7 @@
              <div className="taskList">
                  Here are your tasks:
                  {tasks}
-                 </div>
+            </div>
          );
      }
  }

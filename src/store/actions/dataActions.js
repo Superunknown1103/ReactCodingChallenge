@@ -10,7 +10,7 @@ export const clearErrors = () => {
 export const getData = () => {
   const request = axios.get('/')
   .then(function(response){
-    console.log(response)
+    console.log(response.data);
   }).catch(function(error) {
     console.log(error)
   });

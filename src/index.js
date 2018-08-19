@@ -9,7 +9,7 @@ import App from "./app";
 
 // import { Header, Guidelines } from "./base";
 import "./index.css";
-
+store.dispatch({type: "INCREMENT"});
 const app = (
   <Provider store={store}>
     <App />

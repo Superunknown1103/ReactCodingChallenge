@@ -1,7 +1,7 @@
 import { GET_DATA } from "../actions/types";
 
 const initialState = {
-  data: {}
+  data: []
 };
 
 export default function(state = initialState, action) {
@@ -14,4 +14,5 @@ export default function(state = initialState, action) {
     default:
       return state;
   }
+  console.log(state, action);
 }
