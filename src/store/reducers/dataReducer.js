@@ -1,4 +1,4 @@
-import { GET_DATA, UPDATE_DATA } from "../actions/types";
+import { GET_DATA, UPDATE_DATA, LOADING } from "../actions/types";
 
 const initialState = {
   data: []
@@ -21,3 +21,8 @@ export default function(state = initialState, action) {
   }
   console.log(state, action);
 }
+
+const loading = dispatch => 
+  dispatch({
+    type: LOADING
+  });

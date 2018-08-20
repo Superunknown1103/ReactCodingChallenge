@@ -1,5 +1,6 @@
 import { CLEAR_ERRORS, GET_ERRORS, GET_DATA, UPDATE_DATA } from "./types";
 import axios from "../../axios/instance.js";
+import store from "../../store";
 
 export const clearErrors = () => {
   {
@@ -9,7 +10,7 @@ export const clearErrors = () => {
 
 export const getData = () => async dispatch => {
   try {
-  const res = axios.get('/')
+    const res = axios.get('/')
   dispatch({
     type: UPDATE_DATA,
     payload: res.data
@@ -21,3 +22,7 @@ export const getData = () => async dispatch => {
   })
 }
 };
+
+export const checkData = () => async dispatch => {
+  store.getState();
+}
