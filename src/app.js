@@ -10,18 +10,23 @@ const Container = styled.div`
 	margin: 1rem;
 `;
 
+
 class App extends Component {
 
   render() {
     let title = "Superunknown1103";
     let date = moment().add(30, 'days').format('MMMM Do YYYY, h:mm a');
+    
+    let tasks = () => {
+      console.log(this.props.data)
+    }
 
     return (
       <div>
         <Header title={title} date={date} />
         <Container>
           <Guidelines />
-
+          <button onClick = { tasks }></button>
           <button onClick={ getData }>Fetch Tasks</button>
         </Container>
        <TaskList />

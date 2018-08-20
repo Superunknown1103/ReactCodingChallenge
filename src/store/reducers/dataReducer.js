@@ -1,4 +1,4 @@
-import { GET_DATA } from "../actions/types";
+import { GET_DATA, UPDATE_DATA } from "../actions/types";
 
 const initialState = {
   data: []
@@ -11,6 +11,11 @@ export default function(state = initialState, action) {
         ...state,
         data: action.payload
       };
+    case UPDATE_DATA:
+      return {
+        ...state,
+        data: action.payload
+      }
     default:
       return state;
   }
