@@ -12,7 +12,7 @@ export const getData = () => async dispatch => {
   try {
     const res = axios.get('/')
   dispatch({
-    type: UPDATE_DATA,
+    type: GET_DATA,
     payload: res.data
   });
 } catch (err) {
