@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import moment from "moment";
 import styled from "styled-components";
@@ -11,37 +11,52 @@ const Container = styled.div`
 	margin: 1rem;
 `;
 
+const title = "Superunknown1103";
+
+const date = moment().add(1, 'month').format('MMMM Do YYYY, h:mm a');
+    
+
 
 class App extends Component {
 
-  render() {
-    let title = "Superunknown1103";
-    let date = moment().add(30, 'days').format('MMMM Do YYYY, h:mm a');
-    
-    let tasks = () => {
+    tasks = () => {
       console.log(this.props.data);
+      this.props.getData();
     }
 
+    handleChange = (value) => {
+      // this.props.filterItems(value);
+    }
+
+  render() {
+    const { loading, errors } = this.props;
+
     return (
-      <div>
+      <Fragment>
         <Header title={title} date={date} />
-        <Container>
-          <Guidelines />
-          <button onClick = { checkData }></button>
-          <button onClick={ getData }>Fetch Tasks</button>
-        </Container>
-       <TaskList />
-      </div>
+          <Container>
+            <Guidelines />
+            <button onClick = { checkData }></button>
+            <button onClick={ this.tasks }>Fetch Tasks</button>
+          </Container>
+          <button onClick={this.handleChange}>Knopka</button>
+          { errors && 'SOMETHING BAD' }
+          { loading ? 'LOADING' : <TaskList /> }
+      </Fragment>
     );
   }
 }
 
+// state management
 const mapStateToProps = state => ({
   errors: state.errors,
-  data: state.data
+  // data: state.data.data,
+  loading: state.data.loading,
 });
 
 export default connect(
   mapStateToProps,
-  { getData }
+  { getData,
+    // filterItems
+ }
 )(App);

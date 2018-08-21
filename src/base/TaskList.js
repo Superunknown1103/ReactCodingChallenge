@@ -1,23 +1,31 @@
  import React, { Component } from 'react';
+ import { connect } from "react-redux";
  import Task from '../base/Task';
 
  class TaskList extends Component {
      render() {
-        let tasks;
-        if (this.props.tasks){
-            tasks = this.props.tasks.map(task => {   
+        const { tasks } = this.props;
+        console.log(this.props);
+
+        if (tasks) {
             return (
-                <Task Task={task} />
-            )
-            })
+                <div className="taskList">
+                    Here are your tasks:
+                    { tasks.map(task => <Task key={task._id} task={task} />) }
+                </div>
+            );
         }
-         return (
-             <div className="taskList">
-                 Here are your tasks:
-                 {tasks}
-            </div>
-         );
+
+        return null;
      }
  }
 
- export default TaskList;
+
+const mapStateToProps = state => ({
+  errors: state.errors,
+  tasks: state.data.data,
+});
+
+export default connect(
+  mapStateToProps,
+)(TaskList);
